@@ -3,17 +3,7 @@ import { css, LitElement, svg } from "lit-element";
 export class clockNumber extends LitElement {
   static get properties() {
     return {
-      nb: { type: Number },
-      date: { type: Boolean, reflect: true },
-      noSeconds: { type: Boolean, attribute: "no-seconds", reflect: true },
-      _year: { type: Number },
-      _month: { type: Number },
-      _day: { type: Number },
-      _hours: { type: Number },
-      _minutes: { type: Number },
-      _seconds: { type: Number },
-      firstDigit: { type: Number },
-      secondDigit: { type: Number },
+      nb: { type: String },
     };
   }
 
@@ -31,7 +21,7 @@ export class clockNumber extends LitElement {
     const path7Visibility = [0, 2, 3, 5, 6, 8, 9].includes(nb);
 
     return svg`
-    <path id="path1" d="m64.19 52.885-5.0842-4.8349 12.826-0.04387c7.0546-0.02413 18.649-0.02413 25.765 0l12.939 0.04387-5.0842 4.8349-5.0842 4.8349h-31.194l-5.0842-4.8349z"  class="${
+    <path id="path1" d="m64.19 52.885-5.0842-4.8349 12.826-0.04387c7.0546-0.02413 18.649-0.02413 25.765 0l12.939 0.04387-5.0842 4.8349-5.0842 4.8349h-31.194l-5.0842-4.8349z" class="${
       path1Visibility ? "" : "hide"
     }"/>
     <path id="path2" d="m104.07 89.487-2.6963-2.5871 0.006-14.14 0.006-14.14 3.4657-3.306c1.9062-1.8183 4.1781-4.0026 5.0489-4.854l1.5831-1.548-0.00007 19.336-0.00006 19.336-2.3587 2.2448-2.3587 2.2448-2.6963-2.5871z" class="${
@@ -57,57 +47,46 @@ export class clockNumber extends LitElement {
   }
 
   render() {
+    const [firstDigit, secondDigit] = this.nb.split("");
     return [
       svg`
       <svg viewBox="0 0 75.991 114.71">
         <g transform="translate(-46.883 -35.635)">
-        ${this.renderPath(+this.firstDigit)}
+        ${this.renderPath(+firstDigit)}
         </g>
       </svg>
       `,
       svg`
     <svg viewBox="0 0 75.991 114.71">
       <g transform="translate(-46.883 -35.635)">
-      ${this.renderPath(+this.secondDigit)}
+      ${this.renderPath(+secondDigit)}
       </g>
     </svg>
     `,
     ];
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this._id = setInterval(() => {
-      const currentDatetime = new Date();
-      this._year = currentDatetime.getFullYear();
-      this._month = currentDatetime.getMonth() + 1;
-      this._day = currentDatetime.getDate();
-      this._hours = currentDatetime.getHours();
-      this._minutes = currentDatetime.getMinutes();
-      this._seconds = currentDatetime.getSeconds();
-      [this.firstDigit, this.secondDigit] = this._seconds
-        .toLocaleString("en-US", {
-          minimumIntegerDigits: 2,
-          useGrouping: false,
-        })
-        .split("");
-    }, 1000);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    clearInterval(this._id);
-  }
-
   static get styles() {
     return [
       css`
         svg {
-          width: 70px;
+          width: 50px;
         }
         .hide {
           fill: #e1e1e1;
           opacity: 0.4;
+        }
+
+        .path {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          animation: dash 5s linear forwards;
+        }
+
+        @keyframes dash {
+          to {
+            stroke-dashoffset: 0;
+          }
         }
       `,
     ];
