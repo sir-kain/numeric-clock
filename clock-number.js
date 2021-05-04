@@ -68,6 +68,7 @@ export class clockNumber extends LitElement {
 
   static get styles() {
     return [
+      // language=CSS
       css`
         svg {
           width: 50px;
@@ -75,18 +76,6 @@ export class clockNumber extends LitElement {
         .hide {
           fill: #e1e1e1;
           opacity: 0.4;
-        }
-
-        .path {
-          stroke-dasharray: 1000;
-          stroke-dashoffset: 1000;
-          animation: dash 5s linear forwards;
-        }
-
-        @keyframes dash {
-          to {
-            stroke-dashoffset: 0;
-          }
         }
       `,
     ];

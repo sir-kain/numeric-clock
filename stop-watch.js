@@ -5,12 +5,14 @@ export class Stopwatch extends LitElement {
   static get properties() {
     return {
       date: { type: Boolean, reflect: true },
+      h: '',
       // noSeconds: { type: Boolean, attribute: 'no-seconds', reflect: true },
       // _year: { type: Number },
       // _month: { type: Number },
       // _day: { type: Number },
-      // _hours: { type: Number },
-      // _minutes: { type: Number },
+      _hours: { type: Number },
+      _minutes: { type: Number },
+      _seconds: { type: Number },
       _third: { type: Number },
     };
   }
@@ -35,12 +37,11 @@ export class Stopwatch extends LitElement {
         minimumIntegerDigits: 2,
         useGrouping: false,
       });
-      this._third = currentDatetime.getMilliseconds().toLocaleString("en-US", {
-        minimumIntegerDigits: 2,
-        useGrouping: false,
-      });
-      console.log('this._third ==>', this._third);
-    }, 17);
+      // this._third = currentDatetime.getMilliseconds().toLocaleString("en-US", {
+      //   minimumIntegerDigits: 2,
+      //   useGrouping: false,
+      // });
+    }, 1000);
   }
 
   disconnectedCallback() {
@@ -50,11 +51,11 @@ export class Stopwatch extends LitElement {
 
   render() {
     return html`
+      <clock-number nb="${this._hours}"></clock-number>
+      <span>:</span>
       <clock-number nb="${this._minutes}"></clock-number>
       <span>:</span>
       <clock-number nb="${this._seconds}"></clock-number>
-      <span>:</span>
-      <clock-number nb="${this._third}"></clock-number>
     `;
   }
 
