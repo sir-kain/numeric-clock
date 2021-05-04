@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lit-element": "^2.4.0"
+    "lit": "^2.0.0-rc.1"
   },
   "devDependencies": {
     "@web/dev-server": "^0.1.10"
