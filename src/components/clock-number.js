@@ -1,4 +1,4 @@
-import { css, LitElement, svg } from "lit-element";
+import { css, LitElement, svg } from "lit";
 
 export class clockNumber extends LitElement {
   static get properties() {

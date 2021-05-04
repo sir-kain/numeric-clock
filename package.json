@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "wds --node-resolve --watch --open"
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,6 @@
     "lit": "^2.0.0-rc.1"
   },
   "devDependencies": {
-    "@web/dev-server": "^0.1.10"
+    "vite": "^2.2.4"
   }
 }
