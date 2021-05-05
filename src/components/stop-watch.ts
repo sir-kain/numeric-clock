@@ -1,25 +1,24 @@
 import { css, LitElement, html } from "lit";
+import { customElement, property } from 'lit/decorators.js';
 import "./clock-number";
 
+@customElement('stop-watch')
 export class Stopwatch extends LitElement {
-  static get properties() {
-    return {
-      date: { type: Boolean, reflect: true },
-      h: '',
-      // noSeconds: { type: Boolean, attribute: 'no-seconds', reflect: true },
-      // _year: { type: Number },
-      // _month: { type: Number },
-      // _day: { type: Number },
-      _hours: { type: Number },
-      _minutes: { type: Number },
-      _seconds: { type: Number },
-      _third: { type: Number },
-    };
-  }
+  static styles = css`
+      :host {
+        align-items: center;
+        display: flex;
+      }
+      span {
+        font-size: 4rem;
+        margin: 0 .5rem;
+      }
+  `;
 
-  constructor() {
-    super();
-  }
+  @property({ type: Number }) _hours;
+  @property({ type: Number }) _minutes;
+  @property({ type: Number }) _seconds;
+  @property({ type: Number }) _id;
 
   connectedCallback() {
     super.connectedCallback();
@@ -37,10 +36,6 @@ export class Stopwatch extends LitElement {
         minimumIntegerDigits: 2,
         useGrouping: false,
       });
-      // this._third = currentDatetime.getMilliseconds().toLocaleString("en-US", {
-      //   minimumIntegerDigits: 2,
-      //   useGrouping: false,
-      // });
     }, 1000);
   }
 
@@ -48,6 +43,7 @@ export class Stopwatch extends LitElement {
     super.disconnectedCallback();
     clearInterval(this._id);
   }
+
 
   render() {
     return html`
@@ -58,21 +54,4 @@ export class Stopwatch extends LitElement {
       <clock-number nb="${this._seconds}"></clock-number>
     `;
   }
-
-  static get styles() {
-    return [
-      css`
-        :host {
-          align-items: center;
-          display: flex;
-        }
-        span {
-          font-size: 4rem;
-          margin: 0 .5rem;
-        }
-      `,
-    ];
-  }
 }
-
-window.customElements.define("stop-watch", Stopwatch);
