@@ -1,5 +1,5 @@
 {
-  "name": "horloge",
+  "name": "numeric-clock",
   "version": "1.0.0",
   "description": "A numeric clock",
   "main": "src/components/stop-watch.ts",
