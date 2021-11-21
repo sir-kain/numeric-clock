@@ -1,8 +1,8 @@
 {
   "name": "horloge",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A numeric clock",
+  "main": "src/components/stop-watch.ts",
   "scripts": {
     "start": "vite",
     "build": "vite build",
@@ -11,6 +11,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": "https://github.com/sir-kain/numeric-clock.git",
   "dependencies": {
     "lit": "^2.0.0-rc.1"
   },
