@@ -8,12 +8,16 @@
     "build": "vite build",
     "serve": "vite preview"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
   "repository": "https://github.com/sir-kain/numeric-clock.git",
   "dependencies": {
-    "lit": "^2.0.0-rc.1"
+    "lit": "^2.0.0-rc.1",
+    "numeric-clock": "^1.0.1"
   },
   "devDependencies": {
     "typescript": "^4.2.4",

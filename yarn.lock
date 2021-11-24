@@ -75,6 +75,13 @@ nanoid@^3.1.22:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.22.tgz#b35f8fb7d151990a8aebd5aa5015c03cf726f844"
   integrity sha512-/2ZUaJX2ANuLtTvqTlgqBQNJoQO398KyJgZloL0PZkC0dpysjncRUPsFe3DUPzz/y3h+u7C46np8RMuvF3jsSQ==
 
+numeric-clock@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/numeric-clock/-/numeric-clock-1.0.1.tgz#c8f62e6e16530fff425306ca5df8b0274aa1f20d"
+  integrity sha512-SIFAx0TL4ST/kYywdwKPsGoSKuM4w4d3pQ3P/y2FjRCgN4KXDsFQbBCVeahU0kfz5ZLkC2C4zmm4w+H4+6PqeQ==
+  dependencies:
+    lit "^2.0.0-rc.1"
+
 path-parse@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
