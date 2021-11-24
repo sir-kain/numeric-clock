@@ -1,8 +1,8 @@
 {
   "name": "numeric-clock",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A numeric clock",
-  "main": "src/components/stop-watch.ts",
+  "main": "dist/numeric-clock.umd.js",
   "scripts": {
     "start": "vite",
     "build": "vite build",
